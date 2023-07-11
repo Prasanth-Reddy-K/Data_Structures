@@ -1,0 +1,62 @@
+// Create a class called TwoSum.
+// Define a method named twoSum that takes an array of integers (nums) and a
+// target sum (target) as parameters and returns an array of two integers.
+// Inside the twoSum method, initialize two nested loops. The outer loop will
+// iterate from i = 0 to nums.length - 1.
+// Inside the outer loop, initialize the inner loop. It will iterate from j = i
+// + 1 to nums.length - 1.
+// Within the inner loop, check if the sum of nums[i] and nums[j] equals the
+// target sum:
+// If the sum is equal to the target, return a new array with i and j as
+// elements.
+// If no pair is found within the loops, throw an IllegalArgumentException with
+// an appropriate error message indicating that no two numbers add up to the
+// target sum.
+// In the main method, create an instance of the TwoSum class.
+// Define an array of integers (nums) and assign values to it.
+// Define a target sum (target).
+// Call the twoSum method with the nums and target as arguments, and store the
+// result in an array (result).
+// Print the elements of the result array to display the indices of the two
+// numbers that add up to the target sum.
+
+
+
+import java.util.Scanner;
+class TwoSum {
+    public   static int[]  twoSum(int[] arr, int target) {
+        int[] res= new int[2];
+        int count=0;
+        //int ind1,ind2;
+          for(int i=0;i<arr.length-1;i++) {
+             for(int j=i+1;j<arr.length;j++) {
+                if( arr[i]+arr[j]== target) {
+                    res[0]=i;
+                    res[1]=j;
+                    count=1;
+                    break;
+                }
+              if(count==1) break;  
+             }
+          }
+          if(count==1)
+          return res;
+          else  
+              throw new IllegalArgumentException("pair not found");
+
+        }
+
+    public static void main(String arg[]) {
+         int[] res = new int[2];
+         int arr[] = { 4, 3, 2, 2, 5, 1, 9,7 };
+         int target = 5;
+         try {
+              res= twoSum(arr, target);
+              System.out.print(res[0]+"  ");
+              System.out.print(res[1]);
+         }catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            System.out.println("pair not found");
+         }
+        }
+}
